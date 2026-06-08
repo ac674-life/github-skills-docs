@@ -1,250 +1,10 @@
-# Codex Skills Notes / Codex Skill 使用笔记
+﻿# Codex Skills Notes / Codex Skill 使用笔记
 
-English | [中文](#中文)
+中文 | [English](#english)
 
-## English
+### Skill Store 资源入口
 
-This repository documents Codex/agent skills and related resources I want to track. Each entry includes a short summary, the original source link, installation notes, and basic usage guidance.
-
-### Skill Index
-
-| Skill | Summary | Details |
-| --- | --- | --- |
-| openai/skills | Official OpenAI skill catalog for Codex, including system, curated, and experimental skills. | [View details](#openaiskills) |
-| forrest-orr/artifacts-kit | Security research tool for generating Windows memory artifacts; not a Codex skill. | [View details](#forrest-orrartifacts-kit) |
-| greensock/gsap-skills | Official GSAP skills for teaching agents animation APIs, timelines, ScrollTrigger, plugins, and framework usage. | [View details](#greensockgsap-skills) |
-| pbakaus/impeccable | Frontend design skill and command system for higher-quality UI review, polish, motion, copy, and responsive design. | [View details](#pbakausimpeccable) |
-| Leonxlnx/taste-skill | Anti-generic frontend design skills plus image-generation skills for stronger layout, typography, motion, and spacing. | [View details](#leonxlnxtaste-skill) |
-| jnMetaCode/superpowers-zh | Chinese enhanced Superpowers skill set for disciplined AI coding workflows, TDD, debugging, review, and planning. | [View details](#jnmetacodesuperpowers-zh) |
-| jnMetaCode/agency-agents-zh | Chinese community edition of Agency Agents with 200+ specialist AI roles across engineering, design, marketing, product, and China-specific domains. | [View details](#jnmetacodeagency-agents-zh) |
-| msitarzewski/agency-agents | English Agency Agents collection: specialist AI roles with identities, workflows, deliverables, and activation guidance. | [View details](#msitarzewskiagency-agents) |
-
-### openai/skills
-
-#### Original Link
-
-- Source: <https://github.com/openai/skills>
-
-#### Detailed Description
-
-`openai/skills` is the official skill catalog for Codex. A skill is a folder of instructions, scripts, and resources that an AI coding agent can load when a task matches a specific workflow. This repository is useful because it separates repeatable agent behavior from one-off prompts: instead of explaining the same workflow every time, you install the skill once and let Codex discover it when needed.
-
-The catalog includes system skills that ship with Codex, curated skills for common workflows, and experimental skills for newer patterns. It is best treated as the canonical reference for learning how Codex skills are structured, what a `SKILL.md` should contain, and how official skills package supporting scripts or references.
-
-#### Install In Codex
-
-System skills are bundled with current Codex releases. For curated or experimental skills, use Codex's skill installer:
-
-```text
-$skill-installer gh-address-comments
-$skill-installer install https://github.com/openai/skills/tree/main/skills/.experimental/create-plan
-```
-
-Restart Codex after installation so the new skills are discovered.
-
-#### How To Use
-
-- Use this as the first place to look for official Codex skills.
-- Install individual curated or experimental skills when a workflow needs repeatable instructions, scripts, or references.
-- Treat each skill folder as the source of truth for its `SKILL.md`, license, and supporting files.
-
-### forrest-orr/artifacts-kit
-
-#### Original Link
-
-- Source: <https://github.com/forrest-orr/artifacts-kit>
-
-#### Detailed Description
-
-`forrest-orr/artifacts-kit` is not an AI-agent skill. It is a security research toolkit that can create pseudo-malicious user-mode memory artifacts on Windows so analysts can study, test, or demonstrate detection behavior. It focuses on memory allocation and execution patterns that resemble real malware footprints, which makes it useful for defensive research but unsuitable for normal Codex skill installation.
-
-For this documentation, it is included as a related security resource rather than a Codex skill. The important note is separation: keep it out of `~/.codex/skills/`, do not present it as an agent instruction package, and only use it in controlled environments where this kind of artifact generation is authorized.
-
-#### Install In Codex
-
-This is not a Codex skill and should not be installed as one. Keep it as a separate security research reference.
-
-#### How To Use
-
-- Use only in an authorized lab or malware-analysis training environment.
-- The repository is useful for understanding pseudo-malicious Windows memory artifacts and detection/testing scenarios.
-- Do not mix it into normal Codex skill folders; document it separately because its purpose and risk profile are different from agent instruction skills.
-
-### greensock/gsap-skills
-
-#### Original Link
-
-- Source: <https://github.com/greensock/gsap-skills>
-
-#### Detailed Description
-
-`greensock/gsap-skills` is the official Agent Skills package for GSAP, the GreenSock Animation Platform. It teaches AI coding agents the correct way to use GSAP APIs, including core tweens, timelines, ScrollTrigger, plugins, utility helpers, framework lifecycle cleanup, and performance-sensitive animation practices.
-
-This is valuable because animation code often fails in subtle ways: missing plugin registration, unsafe React effects, selectors that leak outside component scope, scroll animations that need refresh handling, or layout properties that perform poorly. These skills give Codex a strong default playbook for generating maintainable GSAP animation in React, Vue, Svelte, and vanilla JavaScript projects.
-
-#### Install In Codex
-
-```powershell
-npx skills add https://github.com/greensock/gsap-skills
-```
-
-Manual install option: copy the repository's `skills/` folders into `~/.codex/skills/`, then restart Codex.
-
-#### How To Use
-
-- Use when building JavaScript animation with GSAP in React, Vue, Svelte, or vanilla JS.
-- Good for timelines, staggered animation, ScrollTrigger, MotionPath, Flip, plugin usage, cleanup, and performance.
-- Especially helpful when the agent might otherwise generate fragile animation code or misuse framework lifecycles.
-
-### pbakaus/impeccable
-
-#### Original Link
-
-- Source: <https://github.com/pbakaus/impeccable>
-
-#### Detailed Description
-
-`pbakaus/impeccable` is a frontend design skill system that gives AI agents a richer vocabulary for visual quality. It is not just a single style guide: it includes a design skill, references for typography, color, spacing, motion, interaction, responsive design, and UX writing, plus command-style workflows such as audit, critique, polish, harden, animate, layout, and clarify.
-
-The main purpose is to help AI avoid common generic UI patterns and make more deliberate product-design decisions. It is useful when a project needs higher visual taste, design-system alignment, responsive QA, accessibility checks, better copy, or a final polish pass before shipping.
-
-#### Install In Codex
-
-Recommended installer:
-
-```powershell
-npx impeccable skills install
-```
-
-Repository-based install option:
-
-```powershell
-git submodule add https://github.com/pbakaus/impeccable .impeccable
-npx impeccable skills link --source=.impeccable --providers=codex
-```
-
-#### How To Use
-
-- Use for frontend design critique, polishing, responsive hardening, UX copy, animation, and visual quality checks.
-- Commands include `/impeccable audit`, `/impeccable critique`, `/impeccable polish`, `/impeccable harden`, `/impeccable animate`, and more.
-- Best used after a UI exists or before building a high-polish interface that needs a strong design language.
-
-### Leonxlnx/taste-skill
-
-#### Original Link
-
-- Source: <https://github.com/Leonxlnx/taste-skill>
-
-#### Detailed Description
-
-`Leonxlnx/taste-skill` is a collection of portable agent skills aimed at improving AI-generated frontend design. Its default skill focuses on stronger layout, typography, spacing, motion, and design-language inference so the UI does not look like a generic template. It also includes stricter GPT/Codex-oriented variants, redesign workflows for existing projects, image-to-code workflows, and style-specific options such as minimalist, high-end, or brutalist UI.
-
-This repository is especially useful when the problem is not technical correctness but visual blandness. It helps Codex reason about design direction, choose stronger compositions, avoid placeholder-like output, and use reference images or brand boards as a bridge between visual exploration and implementation.
-
-#### Install In Codex
-
-Install all skills:
-
-```powershell
-npx skills add https://github.com/Leonxlnx/taste-skill
-```
-
-Install only the default frontend taste skill:
-
-```powershell
-npx skills add https://github.com/Leonxlnx/taste-skill --skill "design-taste-frontend"
-```
-
-#### How To Use
-
-- Use when AI-generated UI feels generic, under-designed, or visually flat.
-- Pick a specific skill for the job: `design-taste-frontend`, `gpt-taste`, `image-to-code`, `redesign-existing-projects`, `high-end-visual-design`, `minimalist-ui`, or `industrial-brutalist-ui`.
-- Use its image-generation skills for web comps, mobile flows, or brand boards before implementing with Codex.
-
-### jnMetaCode/superpowers-zh
-
-#### Original Link
-
-- Source: <https://github.com/jnMetaCode/superpowers-zh>
-
-#### Detailed Description
-
-`jnMetaCode/superpowers-zh` is a Chinese enhanced edition of the Superpowers skill framework. It turns AI coding from an ad-hoc "start writing code immediately" behavior into a disciplined workflow that includes brainstorming, planning, test-driven development, systematic debugging, code review, worktree isolation, and verification before completion.
-
-Compared with the English upstream, this version adds Chinese translations, broader tool support, and China-specific workflow skills. It is useful for Chinese-speaking developers who want Codex to ask better questions, produce clearer plans, follow stricter engineering habits, and communicate in a style that fits domestic teams and Chinese technical documentation.
-
-#### Install In Codex
-
-```powershell
-npx superpowers-zh
-```
-
-If auto-detection does not find Codex, specify the tool:
-
-```powershell
-npx superpowers-zh --tool codex
-```
-
-#### How To Use
-
-- Use when you want AI coding to follow structured workflows: brainstorming, planning, TDD, debugging, code review, worktrees, and verification before completion.
-- Good for Chinese-language teams because it keeps technical terms readable while adapting communication, Git workflow, commit conventions, and documentation style.
-- Also includes China-specific skills such as Chinese code review, Chinese Git workflow, Chinese documentation, Chinese commit conventions, MCP builder, and workflow runner.
-
-### jnMetaCode/agency-agents-zh
-
-#### Original Link
-
-- Source: <https://github.com/jnMetaCode/agency-agents-zh>
-
-#### Detailed Description
-
-`jnMetaCode/agency-agents-zh` is a Chinese community edition of the Agency Agents collection. Instead of describing one workflow, it provides a large library of specialist AI roles. Each role has an identity, domain expertise, process, and expected deliverables, so Codex can work as a frontend expert, product strategist, tester, marketer, legal reviewer, support specialist, or China-market operator depending on the task.
-
-This edition translates upstream roles and adds China-specific agents for platforms and scenarios such as Xiaohongshu, Douyin, WeChat, Bilibili, Feishu, DingTalk, cross-border ecommerce, government/enterprise workflows, and compliance-heavy industries. It is best used when a task needs a clear expert perspective rather than a generic assistant voice.
-
-#### Install In Codex
-
-From the cloned repository, run with Git Bash, WSL, or another shell that supports `.sh` scripts:
-
-```bash
-./scripts/install.sh --tool codex
-```
-
-#### How To Use
-
-- Use when you want named specialist roles rather than general-purpose prompts.
-- Useful roles cover engineering, design, product, marketing, finance, legal, support, testing, game development, and China-market scenarios such as Xiaohongshu, Douyin, WeChat, Feishu, DingTalk, cross-border ecommerce, and compliance.
-- Activate an agent by asking Codex to use the relevant specialist role for the task.
-
-### msitarzewski/agency-agents
-
-#### Original Link
-
-- Source: <https://github.com/msitarzewski/agency-agents>
-
-#### Detailed Description
-
-`msitarzewski/agency-agents` is the English upstream collection of specialist AI agents. It is organized like an agency: each agent has a specific professional identity, communication style, workflows, deliverables, and success metrics. The collection spans engineering, design, product, marketing, sales, finance, security, testing, strategy, support, and other domains.
-
-The value of this repository is role precision. Instead of asking Codex to "act like an expert" from scratch, you can install or reference a prepared agent definition that tells the model how that expert thinks, what process to follow, and what output quality looks like.
-
-#### Install In Codex
-
-From the cloned repository:
-
-```bash
-./scripts/convert.sh
-./scripts/install.sh --tool codex
-```
-
-#### How To Use
-
-- Use as a library of English specialist AI roles.
-- Each agent file includes identity, mission, workflow, deliverables, success metrics, and communication style.
-- Good when a task benefits from a named expert persona, such as frontend developer, security reviewer, product strategist, QA tester, or marketing specialist.
-
----
+[Skillstore - Codex code review skills](https://skillstore.io/zh-hans/skills?q=code+review&tools=codex) 是一个面向 AI Agent skills 的检索网站。这个页面已经筛选了 `code review` 关键词和 `Codex` 工具，可以快速查看适用于 Codex 的代码审查相关 skills，包括请求代码审查、处理审查反馈、PR 工作流、安全与质量检查、多代理审查等方向。适合在需要寻找新的代码审查 skill 或比较同类 skill 时作为入口。
 
 ## 中文
 
@@ -487,3 +247,250 @@ npx superpowers-zh --tool codex
 - 作为英文 AI 专家角色库使用。
 - 每个 agent 文件包含身份、使命、工作流程、交付物、成功指标和沟通风格。
 - 适合需要专家人设的任务，例如前端开发、安全审查、产品策略、QA 测试或营销策略。
+---
+
+
+### Skill Store Entry
+
+[Skillstore - Codex code review skills](https://skillstore.io/zh-hans/skills?q=code+review&tools=codex) is a searchable catalog for AI Agent skills. This page is filtered by the `code review` keyword and the `Codex` tool, so it is useful for quickly finding Codex-compatible skills related to code review, review feedback, PR workflows, security and quality checks, and multi-agent review. Use it as a discovery entry point when comparing or looking for new code review skills.
+## English
+
+This repository documents Codex/agent skills and related resources I want to track. Each entry includes a short summary, the original source link, installation notes, and basic usage guidance.
+
+### Skill Index
+
+| Skill | Summary | Details |
+| --- | --- | --- |
+| openai/skills | Official OpenAI skill catalog for Codex, including system, curated, and experimental skills. | [View details](#openaiskills) |
+| forrest-orr/artifacts-kit | Security research tool for generating Windows memory artifacts; not a Codex skill. | [View details](#forrest-orrartifacts-kit) |
+| greensock/gsap-skills | Official GSAP skills for teaching agents animation APIs, timelines, ScrollTrigger, plugins, and framework usage. | [View details](#greensockgsap-skills) |
+| pbakaus/impeccable | Frontend design skill and command system for higher-quality UI review, polish, motion, copy, and responsive design. | [View details](#pbakausimpeccable) |
+| Leonxlnx/taste-skill | Anti-generic frontend design skills plus image-generation skills for stronger layout, typography, motion, and spacing. | [View details](#leonxlnxtaste-skill) |
+| jnMetaCode/superpowers-zh | Chinese enhanced Superpowers skill set for disciplined AI coding workflows, TDD, debugging, review, and planning. | [View details](#jnmetacodesuperpowers-zh) |
+| jnMetaCode/agency-agents-zh | Chinese community edition of Agency Agents with 200+ specialist AI roles across engineering, design, marketing, product, and China-specific domains. | [View details](#jnmetacodeagency-agents-zh) |
+| msitarzewski/agency-agents | English Agency Agents collection: specialist AI roles with identities, workflows, deliverables, and activation guidance. | [View details](#msitarzewskiagency-agents) |
+
+### openai/skills
+
+#### Original Link
+
+- Source: <https://github.com/openai/skills>
+
+#### Detailed Description
+
+`openai/skills` is the official skill catalog for Codex. A skill is a folder of instructions, scripts, and resources that an AI coding agent can load when a task matches a specific workflow. This repository is useful because it separates repeatable agent behavior from one-off prompts: instead of explaining the same workflow every time, you install the skill once and let Codex discover it when needed.
+
+The catalog includes system skills that ship with Codex, curated skills for common workflows, and experimental skills for newer patterns. It is best treated as the canonical reference for learning how Codex skills are structured, what a `SKILL.md` should contain, and how official skills package supporting scripts or references.
+
+#### Install In Codex
+
+System skills are bundled with current Codex releases. For curated or experimental skills, use Codex's skill installer:
+
+```text
+$skill-installer gh-address-comments
+$skill-installer install https://github.com/openai/skills/tree/main/skills/.experimental/create-plan
+```
+
+Restart Codex after installation so the new skills are discovered.
+
+#### How To Use
+
+- Use this as the first place to look for official Codex skills.
+- Install individual curated or experimental skills when a workflow needs repeatable instructions, scripts, or references.
+- Treat each skill folder as the source of truth for its `SKILL.md`, license, and supporting files.
+
+### forrest-orr/artifacts-kit
+
+#### Original Link
+
+- Source: <https://github.com/forrest-orr/artifacts-kit>
+
+#### Detailed Description
+
+`forrest-orr/artifacts-kit` is not an AI-agent skill. It is a security research toolkit that can create pseudo-malicious user-mode memory artifacts on Windows so analysts can study, test, or demonstrate detection behavior. It focuses on memory allocation and execution patterns that resemble real malware footprints, which makes it useful for defensive research but unsuitable for normal Codex skill installation.
+
+For this documentation, it is included as a related security resource rather than a Codex skill. The important note is separation: keep it out of `~/.codex/skills/`, do not present it as an agent instruction package, and only use it in controlled environments where this kind of artifact generation is authorized.
+
+#### Install In Codex
+
+This is not a Codex skill and should not be installed as one. Keep it as a separate security research reference.
+
+#### How To Use
+
+- Use only in an authorized lab or malware-analysis training environment.
+- The repository is useful for understanding pseudo-malicious Windows memory artifacts and detection/testing scenarios.
+- Do not mix it into normal Codex skill folders; document it separately because its purpose and risk profile are different from agent instruction skills.
+
+### greensock/gsap-skills
+
+#### Original Link
+
+- Source: <https://github.com/greensock/gsap-skills>
+
+#### Detailed Description
+
+`greensock/gsap-skills` is the official Agent Skills package for GSAP, the GreenSock Animation Platform. It teaches AI coding agents the correct way to use GSAP APIs, including core tweens, timelines, ScrollTrigger, plugins, utility helpers, framework lifecycle cleanup, and performance-sensitive animation practices.
+
+This is valuable because animation code often fails in subtle ways: missing plugin registration, unsafe React effects, selectors that leak outside component scope, scroll animations that need refresh handling, or layout properties that perform poorly. These skills give Codex a strong default playbook for generating maintainable GSAP animation in React, Vue, Svelte, and vanilla JavaScript projects.
+
+#### Install In Codex
+
+```powershell
+npx skills add https://github.com/greensock/gsap-skills
+```
+
+Manual install option: copy the repository's `skills/` folders into `~/.codex/skills/`, then restart Codex.
+
+#### How To Use
+
+- Use when building JavaScript animation with GSAP in React, Vue, Svelte, or vanilla JS.
+- Good for timelines, staggered animation, ScrollTrigger, MotionPath, Flip, plugin usage, cleanup, and performance.
+- Especially helpful when the agent might otherwise generate fragile animation code or misuse framework lifecycles.
+
+### pbakaus/impeccable
+
+#### Original Link
+
+- Source: <https://github.com/pbakaus/impeccable>
+
+#### Detailed Description
+
+`pbakaus/impeccable` is a frontend design skill system that gives AI agents a richer vocabulary for visual quality. It is not just a single style guide: it includes a design skill, references for typography, color, spacing, motion, interaction, responsive design, and UX writing, plus command-style workflows such as audit, critique, polish, harden, animate, layout, and clarify.
+
+The main purpose is to help AI avoid common generic UI patterns and make more deliberate product-design decisions. It is useful when a project needs higher visual taste, design-system alignment, responsive QA, accessibility checks, better copy, or a final polish pass before shipping.
+
+#### Install In Codex
+
+Recommended installer:
+
+```powershell
+npx impeccable skills install
+```
+
+Repository-based install option:
+
+```powershell
+git submodule add https://github.com/pbakaus/impeccable .impeccable
+npx impeccable skills link --source=.impeccable --providers=codex
+```
+
+#### How To Use
+
+- Use for frontend design critique, polishing, responsive hardening, UX copy, animation, and visual quality checks.
+- Commands include `/impeccable audit`, `/impeccable critique`, `/impeccable polish`, `/impeccable harden`, `/impeccable animate`, and more.
+- Best used after a UI exists or before building a high-polish interface that needs a strong design language.
+
+### Leonxlnx/taste-skill
+
+#### Original Link
+
+- Source: <https://github.com/Leonxlnx/taste-skill>
+
+#### Detailed Description
+
+`Leonxlnx/taste-skill` is a collection of portable agent skills aimed at improving AI-generated frontend design. Its default skill focuses on stronger layout, typography, spacing, motion, and design-language inference so the UI does not look like a generic template. It also includes stricter GPT/Codex-oriented variants, redesign workflows for existing projects, image-to-code workflows, and style-specific options such as minimalist, high-end, or brutalist UI.
+
+This repository is especially useful when the problem is not technical correctness but visual blandness. It helps Codex reason about design direction, choose stronger compositions, avoid placeholder-like output, and use reference images or brand boards as a bridge between visual exploration and implementation.
+
+#### Install In Codex
+
+Install all skills:
+
+```powershell
+npx skills add https://github.com/Leonxlnx/taste-skill
+```
+
+Install only the default frontend taste skill:
+
+```powershell
+npx skills add https://github.com/Leonxlnx/taste-skill --skill "design-taste-frontend"
+```
+
+#### How To Use
+
+- Use when AI-generated UI feels generic, under-designed, or visually flat.
+- Pick a specific skill for the job: `design-taste-frontend`, `gpt-taste`, `image-to-code`, `redesign-existing-projects`, `high-end-visual-design`, `minimalist-ui`, or `industrial-brutalist-ui`.
+- Use its image-generation skills for web comps, mobile flows, or brand boards before implementing with Codex.
+
+### jnMetaCode/superpowers-zh
+
+#### Original Link
+
+- Source: <https://github.com/jnMetaCode/superpowers-zh>
+
+#### Detailed Description
+
+`jnMetaCode/superpowers-zh` is a Chinese enhanced edition of the Superpowers skill framework. It turns AI coding from an ad-hoc "start writing code immediately" behavior into a disciplined workflow that includes brainstorming, planning, test-driven development, systematic debugging, code review, worktree isolation, and verification before completion.
+
+Compared with the English upstream, this version adds Chinese translations, broader tool support, and China-specific workflow skills. It is useful for Chinese-speaking developers who want Codex to ask better questions, produce clearer plans, follow stricter engineering habits, and communicate in a style that fits domestic teams and Chinese technical documentation.
+
+#### Install In Codex
+
+```powershell
+npx superpowers-zh
+```
+
+If auto-detection does not find Codex, specify the tool:
+
+```powershell
+npx superpowers-zh --tool codex
+```
+
+#### How To Use
+
+- Use when you want AI coding to follow structured workflows: brainstorming, planning, TDD, debugging, code review, worktrees, and verification before completion.
+- Good for Chinese-language teams because it keeps technical terms readable while adapting communication, Git workflow, commit conventions, and documentation style.
+- Also includes China-specific skills such as Chinese code review, Chinese Git workflow, Chinese documentation, Chinese commit conventions, MCP builder, and workflow runner.
+
+### jnMetaCode/agency-agents-zh
+
+#### Original Link
+
+- Source: <https://github.com/jnMetaCode/agency-agents-zh>
+
+#### Detailed Description
+
+`jnMetaCode/agency-agents-zh` is a Chinese community edition of the Agency Agents collection. Instead of describing one workflow, it provides a large library of specialist AI roles. Each role has an identity, domain expertise, process, and expected deliverables, so Codex can work as a frontend expert, product strategist, tester, marketer, legal reviewer, support specialist, or China-market operator depending on the task.
+
+This edition translates upstream roles and adds China-specific agents for platforms and scenarios such as Xiaohongshu, Douyin, WeChat, Bilibili, Feishu, DingTalk, cross-border ecommerce, government/enterprise workflows, and compliance-heavy industries. It is best used when a task needs a clear expert perspective rather than a generic assistant voice.
+
+#### Install In Codex
+
+From the cloned repository, run with Git Bash, WSL, or another shell that supports `.sh` scripts:
+
+```bash
+./scripts/install.sh --tool codex
+```
+
+#### How To Use
+
+- Use when you want named specialist roles rather than general-purpose prompts.
+- Useful roles cover engineering, design, product, marketing, finance, legal, support, testing, game development, and China-market scenarios such as Xiaohongshu, Douyin, WeChat, Feishu, DingTalk, cross-border ecommerce, and compliance.
+- Activate an agent by asking Codex to use the relevant specialist role for the task.
+
+### msitarzewski/agency-agents
+
+#### Original Link
+
+- Source: <https://github.com/msitarzewski/agency-agents>
+
+#### Detailed Description
+
+`msitarzewski/agency-agents` is the English upstream collection of specialist AI agents. It is organized like an agency: each agent has a specific professional identity, communication style, workflows, deliverables, and success metrics. The collection spans engineering, design, product, marketing, sales, finance, security, testing, strategy, support, and other domains.
+
+The value of this repository is role precision. Instead of asking Codex to "act like an expert" from scratch, you can install or reference a prepared agent definition that tells the model how that expert thinks, what process to follow, and what output quality looks like.
+
+#### Install In Codex
+
+From the cloned repository:
+
+```bash
+./scripts/convert.sh
+./scripts/install.sh --tool codex
+```
+
+#### How To Use
+
+- Use as a library of English specialist AI roles.
+- Each agent file includes identity, mission, workflow, deliverables, success metrics, and communication style.
+- Good when a task benefits from a named expert persona, such as frontend developer, security reviewer, product strategist, QA tester, or marketing specialist.
