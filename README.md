@@ -52,14 +52,54 @@
 
 | Skill 名字 | 简介 | 详情链接 |
 | --- | --- | --- |
-| openai/skills | OpenAI 官方 Codex skill 目录，包含系统、精选和实验性 skills。 | [查看详情](#openaiskills-1) |
-| forrest-orr/artifacts-kit | Windows 内存伪迹生成的安全研究工具；不是 Codex skill。 | [查看详情](#forrest-orrartifacts-kit-1) |
-| greensock/gsap-skills | GSAP 官方 AI skills，用于动画 API、时间线、ScrollTrigger、插件和框架实践。 | [查看详情](#greensockgsap-skills-1) |
-| pbakaus/impeccable | 前端设计质量 skill 和命令系统，用于 UI 审查、打磨、动效、文案和响应式设计。 | [查看详情](#pbakausimpeccable-1) |
-| Leonxlnx/taste-skill | 反模板化前端设计 skills，并包含用于参考图、移动端、品牌板的图像生成 skills。 | [查看详情](#leonxlnxtaste-skill-1) |
-| jnMetaCode/superpowers-zh | 中文增强版 Superpowers，覆盖需求澄清、计划、TDD、调试、代码审查和完成前验证。 | [查看详情](#jnmetacodesuperpowers-zh-1) |
-| jnMetaCode/agency-agents-zh | 中文社区版 AI 专家角色库，覆盖工程、设计、营销、产品以及中国市场垂直场景。 | [查看详情](#jnmetacodeagency-agents-zh-1) |
-| msitarzewski/agency-agents | 英文版 AI 专家角色库，每个 agent 有身份、流程、交付物和调用方式。 | [查看详情](#msitarzewskiagency-agents-1) |
+| ac674-life/codex-context-ops | 我自研的中英文 Codex 插件市场，用于建立上下文安全的 AI 编程工作流。 | [查看详情](#ac674-lifecodex-context-ops) |
+| openai/skills | OpenAI 官方 Codex skill 目录，包含系统、精选和实验性 skills。 | [查看详情](#openaiskills) |
+| forrest-orr/artifacts-kit | Windows 内存伪迹生成的安全研究工具；不是 Codex skill。 | [查看详情](#forrest-orrartifacts-kit) |
+| greensock/gsap-skills | GSAP 官方 AI skills，用于动画 API、时间线、ScrollTrigger、插件和框架实践。 | [查看详情](#greensockgsap-skills) |
+| pbakaus/impeccable | 前端设计质量 skill 和命令系统，用于 UI 审查、打磨、动效、文案和响应式设计。 | [查看详情](#pbakausimpeccable) |
+| Leonxlnx/taste-skill | 反模板化前端设计 skills，并包含用于参考图、移动端、品牌板的图像生成 skills。 | [查看详情](#leonxlnxtaste-skill) |
+| jnMetaCode/superpowers-zh | 中文增强版 Superpowers，覆盖需求澄清、计划、TDD、调试、代码审查和完成前验证。 | [查看详情](#jnmetacodesuperpowers-zh) |
+| jnMetaCode/agency-agents-zh | 中文社区版 AI 专家角色库，覆盖工程、设计、营销、产品以及中国市场垂直场景。 | [查看详情](#jnmetacodeagency-agents-zh) |
+| msitarzewski/agency-agents | 英文版 AI 专家角色库，每个 agent 有身份、流程、交付物和调用方式。 | [查看详情](#msitarzewskiagency-agents) |
+
+### ac674-life/codex-context-ops
+
+#### 原文链接
+
+- 原文：<https://github.com/ac674-life/codex-context-ops>
+
+#### 详细说明
+
+`ac674-life/codex-context-ops` 是我自研的中英文 Codex 插件市场，目标是给大型项目建立“上下文安全”的 AI 编程工作流。它通过一组可复用的 Codex skills，帮助项目减少上下文污染、重复 Bug、长会话噪声和反复重新探索代码库的问题。
+
+这个插件重点围绕上下文治理、项目初始化、功能索引、安全 bugfix、安全 review、安全 refactor、subagents、worktree、release check 和 bug memory。它也集成了 agency agents 安装流程，可以根据项目类型安装小而聚焦的专家 agent 子集，而不是一次性把所有 agent 都塞进上下文。
+
+#### 如何安装到 Codex
+
+推荐远程安装：
+
+```powershell
+codex plugin marketplace add ac674-life/codex-context-ops
+codex plugin add codex-context-ops@context-tools
+```
+
+本地开发安装：
+
+```powershell
+git clone https://github.com/ac674-life/codex-context-ops.git
+cd codex-context-ops
+powershell -ExecutionPolicy Bypass -File .\install.ps1
+```
+
+安装后重启 Codex，或打开一个新线程，让插件和 skills 被重新加载。
+
+#### 如何使用
+
+- 使用 `$context-init` 初始化项目治理文件、上下文文档和本地 skills。
+- 使用 `$context-governance` 在非简单任务前控制上下文规模，优先选择正确的探索方式。
+- 使用 `$context-safe-bugfix`、`$context-safe-review`、`$context-safe-refactor` 处理 bugfix、review 和重构。
+- 使用 `$context-feature-index` 为大型项目建立功能索引，减少每个线程从零探索。
+- 使用 `$context-agency-agents-install` 按项目类型安装精选 agency agents。
 
 ### openai/skills
 
@@ -338,14 +378,54 @@ This repository documents Codex/agent skills and related resources I want to tra
 
 | Skill | Summary | Details |
 | --- | --- | --- |
-| openai/skills | Official OpenAI skill catalog for Codex, including system, curated, and experimental skills. | [View details](#openaiskills) |
-| forrest-orr/artifacts-kit | Security research tool for generating Windows memory artifacts; not a Codex skill. | [View details](#forrest-orrartifacts-kit) |
-| greensock/gsap-skills | Official GSAP skills for teaching agents animation APIs, timelines, ScrollTrigger, plugins, and framework usage. | [View details](#greensockgsap-skills) |
-| pbakaus/impeccable | Frontend design skill and command system for higher-quality UI review, polish, motion, copy, and responsive design. | [View details](#pbakausimpeccable) |
-| Leonxlnx/taste-skill | Anti-generic frontend design skills plus image-generation skills for stronger layout, typography, motion, and spacing. | [View details](#leonxlnxtaste-skill) |
-| jnMetaCode/superpowers-zh | Chinese enhanced Superpowers skill set for disciplined AI coding workflows, TDD, debugging, review, and planning. | [View details](#jnmetacodesuperpowers-zh) |
-| jnMetaCode/agency-agents-zh | Chinese community edition of Agency Agents with 200+ specialist AI roles across engineering, design, marketing, product, and China-specific domains. | [View details](#jnmetacodeagency-agents-zh) |
-| msitarzewski/agency-agents | English Agency Agents collection: specialist AI roles with identities, workflows, deliverables, and activation guidance. | [View details](#msitarzewskiagency-agents) |
+| ac674-life/codex-context-ops | My self-developed bilingual Codex plugin marketplace for context-safe AI coding workflows. | [View details](#ac674-lifecodex-context-ops-1) |
+| openai/skills | Official OpenAI skill catalog for Codex, including system, curated, and experimental skills. | [View details](#openaiskills-1) |
+| forrest-orr/artifacts-kit | Security research tool for generating Windows memory artifacts; not a Codex skill. | [View details](#forrest-orrartifacts-kit-1) |
+| greensock/gsap-skills | Official GSAP skills for teaching agents animation APIs, timelines, ScrollTrigger, plugins, and framework usage. | [View details](#greensockgsap-skills-1) |
+| pbakaus/impeccable | Frontend design skill and command system for higher-quality UI review, polish, motion, copy, and responsive design. | [View details](#pbakausimpeccable-1) |
+| Leonxlnx/taste-skill | Anti-generic frontend design skills plus image-generation skills for stronger layout, typography, motion, and spacing. | [View details](#leonxlnxtaste-skill-1) |
+| jnMetaCode/superpowers-zh | Chinese enhanced Superpowers skill set for disciplined AI coding workflows, TDD, debugging, review, and planning. | [View details](#jnmetacodesuperpowers-zh-1) |
+| jnMetaCode/agency-agents-zh | Chinese community edition of Agency Agents with 200+ specialist AI roles across engineering, design, marketing, product, and China-specific domains. | [View details](#jnmetacodeagency-agents-zh-1) |
+| msitarzewski/agency-agents | English Agency Agents collection: specialist AI roles with identities, workflows, deliverables, and activation guidance. | [View details](#msitarzewskiagency-agents-1) |
+
+### ac674-life/codex-context-ops
+
+#### Original Link
+
+- Source: <https://github.com/ac674-life/codex-context-ops>
+
+#### Detailed Description
+
+`ac674-life/codex-context-ops` is my self-developed bilingual Codex plugin marketplace for context-safe AI coding workflows. It uses reusable Codex skills to help large projects reduce context pollution, repeated bugs, long-running conversation noise, and repeated codebase rediscovery.
+
+The plugin focuses on context governance, project initialization, feature indexing, safe bugfixes, safe reviews, safe refactors, subagents, worktrees, release checks, and durable bug memory. It also includes an agency-agents installation flow that installs a small project-specific subset of expert agents instead of flooding the context with everything.
+
+#### Install In Codex
+
+Recommended remote install:
+
+```powershell
+codex plugin marketplace add ac674-life/codex-context-ops
+codex plugin add codex-context-ops@context-tools
+```
+
+Local development install:
+
+```powershell
+git clone https://github.com/ac674-life/codex-context-ops.git
+cd codex-context-ops
+powershell -ExecutionPolicy Bypass -File .\install.ps1
+```
+
+Restart Codex or open a new thread after installation so the plugin and skills are reloaded.
+
+#### How To Use
+
+- Use `$context-init` to initialize project governance files, context docs, and local skills.
+- Use `$context-governance` before non-trivial tasks to keep context small and choose the right exploration path.
+- Use `$context-safe-bugfix`, `$context-safe-review`, and `$context-safe-refactor` for bugfix, review, and refactor workflows.
+- Use `$context-feature-index` to build a feature index for large projects and avoid rediscovering the same code in every thread.
+- Use `$context-agency-agents-install` to install a focused agency-agent subset based on the project type.
 
 ### openai/skills
 
