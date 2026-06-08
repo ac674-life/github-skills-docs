@@ -6,6 +6,44 @@
 
 [Skillstore - Codex code review skills](https://skillstore.io/zh-hans/skills?q=code+review&tools=codex) 是一个面向 AI Agent skills 的检索网站。这个页面已经筛选了 `code review` 关键词和 `Codex` 工具，可以快速查看适用于 Codex 的代码审查相关 skills，包括请求代码审查、处理审查反馈、PR 工作流、安全与质量检查、多代理审查等方向。适合在需要寻找新的代码审查 skill 或比较同类 skill 时作为入口。
 
+### 当前 Codex 环境中的内置/插件 Skills
+
+下面这些是当前本机 Codex 环境扫描到的 skills，主要来自两个位置：
+
+- 本地 skills：`C:\Users\admin\.codex\skills`
+- 插件缓存 skills：`C:\Users\admin\.codex\plugins\cache`
+
+这些条目大多是 Codex 自带或当前已启用插件提供的能力，并不是独立的外部 GitHub skill 仓库。没有独立原文链接的条目，原文链接位置统一说明为“当前 Codex 本地环境或插件缓存，暂无独立原文链接”。
+
+#### 本地安装 / 系统 Skills
+
+| 来源 | Skills | 原文链接说明 | 简介 |
+| --- | --- | --- | --- |
+| local / system | `imagegen` | 当前 Codex 本地环境或插件缓存，暂无独立原文链接。 | 生成或编辑图片、纹理、插画、mockup 等位图视觉资产。 |
+| local / system | `openai-docs` | 当前 Codex 本地环境或插件缓存，暂无独立原文链接。 | 查询 OpenAI / Codex 官方产品和 API 文档时使用。 |
+| local / system | `plugin-creator` | 当前 Codex 本地环境或插件缓存，暂无独立原文链接。 | 创建或维护 Codex 插件目录和 manifest。 |
+| local / system | `skill-creator` | 当前 Codex 本地环境或插件缓存，暂无独立原文链接。 | 创建或更新 Codex skills 的工作流指导。 |
+| local / system | `skill-installer` | 当前 Codex 本地环境或插件缓存，暂无独立原文链接。 | 从精选列表或 GitHub 仓库安装 Codex skills。 |
+| local | `pdf` | 当前 Codex 本地环境或插件缓存，暂无独立原文链接。 | 读取、创建、审阅 PDF，尤其适合需要渲染校验的场景。 |
+| local | `playwright` | 当前 Codex 本地环境或插件缓存，暂无独立原文链接。 | 使用真实浏览器自动化测试、截图、调试页面流程。 |
+
+#### 插件 Skills
+
+| 插件 / 来源 | Skills | 原文链接说明 | 简介 |
+| --- | --- | --- | --- |
+| Browser | `control-in-app-browser` | 当前 Codex 本地环境或插件缓存，暂无独立原文链接。 | 控制 Codex 内置浏览器，打开、检查、点击和截图本地或网页目标。 |
+| Chrome | `chrome` | 当前 Codex 本地环境或插件缓存，暂无独立原文链接。 | 控制用户 Chrome 浏览器，适合需要登录态、扩展或现有标签页的任务；当前缓存里有两个版本。 |
+| Computer Use | `computer-use` | 当前 Codex 本地环境或插件缓存，暂无独立原文链接。 | 控制 Windows 桌面应用。 |
+| Documents | `documents` | 当前 Codex 本地环境或插件缓存，暂无独立原文链接。 | 创建、编辑、渲染和校验 Word / docx 文档。 |
+| Presentations | `presentations` | 当前 Codex 本地环境或插件缓存，暂无独立原文链接。 | 创建、编辑和验证 PPTX / 演示文稿。 |
+| Spreadsheets | `spreadsheets` | 当前 Codex 本地环境或插件缓存，暂无独立原文链接。 | 创建、编辑、分析、可视化电子表格。 |
+| GitHub | `github`, `gh-address-comments`, `gh-fix-ci`, `yeet` | 当前 Codex 本地环境或插件缓存，暂无独立原文链接。 | GitHub 仓库、PR、Issue、代码审查反馈、CI 修复、提交推送和 PR 创建工作流。 |
+| Figma | `figma-code-connect`, `figma-create-new-file`, `figma-generate-design`, `figma-generate-diagram`, `figma-generate-library`, `figma-use`, `figma-use-figjam`, `figma-use-slides` | 当前 Codex 本地环境或插件缓存，暂无独立原文链接。 | Figma 文件创建、设计生成、图表生成、组件库、变量、FigJam 和 Slides 操作。 |
+| Netlify | `netlify-ai-gateway`, `netlify-blobs`, `netlify-caching`, `netlify-cli-and-deploy`, `netlify-config`, `netlify-deploy`, `netlify-edge-functions`, `netlify-forms`, `netlify-frameworks`, `netlify-functions`, `netlify-identity`, `netlify-image-cdn` | 当前 Codex 本地环境或插件缓存，暂无独立原文链接。 | Netlify 部署、配置、函数、表单、边缘函数、缓存、身份认证、图片 CDN 和 AI Gateway。 |
+| Superpowers | `brainstorming`, `dispatching-parallel-agents`, `executing-plans`, `finishing-a-development-branch`, `receiving-code-review`, `requesting-code-review`, `subagent-driven-development`, `systematic-debugging`, `test-driven-development`, `using-git-worktrees`, `using-superpowers`, `verification-before-completion`, `writing-plans`, `writing-skills` | 当前 Codex 本地环境或插件缓存，暂无独立原文链接。 | 结构化 AI 编程流程，包括计划、TDD、调试、代码审查、worktree、并行 agent 和完成前验证。 |
+| Codex Context Ops | `context-agency-agents-install`, `context-bug-memory`, `context-feature-index`, `context-governance`, `context-init`, `context-release-check`, `context-safe-bugfix`, `context-safe-refactor`, `context-safe-review`, `context-subagents`, `context-worktree` | 当前 Codex 本地环境或插件缓存，暂无独立原文链接。 | 管理上下文、索引功能、安装 agents、执行安全 bugfix / refactor / review、worktree 和发布检查。 |
+| Sales | `analyze-account-signals`, `build-business-case`, `build-competitive-brief`, `enrich-company-and-contact-data`, `find-customer-quotes`, `find-key-internal-sources`, `follow-up-after-call`, `get-rep-call-feedback`, `hubspot`, `index`, `plan-deal-strategy`, `prepare-for-meeting`, `prioritize-accounts`, `review-forecast`, `review-rep-call-trends`, `sales-company-research`, `salesforce`, `suggest-sales-next-step`, `user-context`, `zoominfo` | 当前 Codex 本地环境或插件缓存，暂无独立原文链接。 | 销售场景工作流，包括会议准备、通话跟进、客户研究、预测审查、竞品简报、CRM 和联系人数据增强。 |
+
 ## 中文
 
 这个仓库用于维护我在使用 Codex / AI Agent 过程中关注的 skills 和相关资源。每个条目包含简介、原文链接、如何安装到 Codex，以及如何使用。
@@ -253,6 +291,45 @@ npx superpowers-zh --tool codex
 ### Skill Store Entry
 
 [Skillstore - Codex code review skills](https://skillstore.io/zh-hans/skills?q=code+review&tools=codex) is a searchable catalog for AI Agent skills. This page is filtered by the `code review` keyword and the `Codex` tool, so it is useful for quickly finding Codex-compatible skills related to code review, review feedback, PR workflows, security and quality checks, and multi-agent review. Use it as a discovery entry point when comparing or looking for new code review skills.
+
+### Built-In And Plugin Skills In This Codex Environment
+
+The following skills were found in the current local Codex environment. They mainly come from:
+
+- Local skills: `C:\Users\admin\.codex\skills`
+- Plugin cache skills: `C:\Users\admin\.codex\plugins\cache`
+
+Most of these are built into Codex or provided by currently enabled plugins. They are not independent external GitHub skill repositories. When a skill has no standalone original source link, the source note says: "Current Codex local environment or plugin cache; no standalone original link."
+
+#### Local / System Skills
+
+| Source | Skills | Source Link Note | Summary |
+| --- | --- | --- | --- |
+| local / system | `imagegen` | Current Codex local environment or plugin cache; no standalone original link. | Generate or edit bitmap visual assets such as images, textures, illustrations, and mockups. |
+| local / system | `openai-docs` | Current Codex local environment or plugin cache; no standalone original link. | Look up official OpenAI / Codex product and API documentation. |
+| local / system | `plugin-creator` | Current Codex local environment or plugin cache; no standalone original link. | Create or maintain Codex plugin directories and manifests. |
+| local / system | `skill-creator` | Current Codex local environment or plugin cache; no standalone original link. | Create or update Codex skills. |
+| local / system | `skill-installer` | Current Codex local environment or plugin cache; no standalone original link. | Install Codex skills from curated lists or GitHub repositories. |
+| local | `pdf` | Current Codex local environment or plugin cache; no standalone original link. | Read, create, and review PDFs, especially when rendered layout checks matter. |
+| local | `playwright` | Current Codex local environment or plugin cache; no standalone original link. | Automate a real browser for tests, screenshots, and UI-flow debugging. |
+
+#### Plugin Skills
+
+| Plugin / Source | Skills | Source Link Note | Summary |
+| --- | --- | --- | --- |
+| Browser | `control-in-app-browser` | Current Codex local environment or plugin cache; no standalone original link. | Control the in-app Codex browser for opening, inspecting, clicking, and screenshotting local or web targets. |
+| Chrome | `chrome` | Current Codex local environment or plugin cache; no standalone original link. | Control the user's Chrome browser for authenticated sessions, extensions, or existing tabs; two cached versions are present. |
+| Computer Use | `computer-use` | Current Codex local environment or plugin cache; no standalone original link. | Control Windows desktop apps. |
+| Documents | `documents` | Current Codex local environment or plugin cache; no standalone original link. | Create, edit, render, and verify Word / docx documents. |
+| Presentations | `presentations` | Current Codex local environment or plugin cache; no standalone original link. | Create, edit, and verify PPTX presentations. |
+| Spreadsheets | `spreadsheets` | Current Codex local environment or plugin cache; no standalone original link. | Create, edit, analyze, and visualize spreadsheets. |
+| GitHub | `github`, `gh-address-comments`, `gh-fix-ci`, `yeet` | Current Codex local environment or plugin cache; no standalone original link. | GitHub repository, PR, issue, review-feedback, CI-fix, commit, push, and PR-creation workflows. |
+| Figma | `figma-code-connect`, `figma-create-new-file`, `figma-generate-design`, `figma-generate-diagram`, `figma-generate-library`, `figma-use`, `figma-use-figjam`, `figma-use-slides` | Current Codex local environment or plugin cache; no standalone original link. | Figma file creation, design generation, diagram generation, component libraries, variables, FigJam, and Slides operations. |
+| Netlify | `netlify-ai-gateway`, `netlify-blobs`, `netlify-caching`, `netlify-cli-and-deploy`, `netlify-config`, `netlify-deploy`, `netlify-edge-functions`, `netlify-forms`, `netlify-frameworks`, `netlify-functions`, `netlify-identity`, `netlify-image-cdn` | Current Codex local environment or plugin cache; no standalone original link. | Netlify deployment, config, functions, forms, edge functions, caching, identity, Image CDN, and AI Gateway workflows. |
+| Superpowers | `brainstorming`, `dispatching-parallel-agents`, `executing-plans`, `finishing-a-development-branch`, `receiving-code-review`, `requesting-code-review`, `subagent-driven-development`, `systematic-debugging`, `test-driven-development`, `using-git-worktrees`, `using-superpowers`, `verification-before-completion`, `writing-plans`, `writing-skills` | Current Codex local environment or plugin cache; no standalone original link. | Structured AI coding workflows for planning, TDD, debugging, code review, worktrees, parallel agents, and completion verification. |
+| Codex Context Ops | `context-agency-agents-install`, `context-bug-memory`, `context-feature-index`, `context-governance`, `context-init`, `context-release-check`, `context-safe-bugfix`, `context-safe-refactor`, `context-safe-review`, `context-subagents`, `context-worktree` | Current Codex local environment or plugin cache; no standalone original link. | Context management, feature indexing, agent installation, safe bugfix / refactor / review, worktrees, and release checks. |
+| Sales | `analyze-account-signals`, `build-business-case`, `build-competitive-brief`, `enrich-company-and-contact-data`, `find-customer-quotes`, `find-key-internal-sources`, `follow-up-after-call`, `get-rep-call-feedback`, `hubspot`, `index`, `plan-deal-strategy`, `prepare-for-meeting`, `prioritize-accounts`, `review-forecast`, `review-rep-call-trends`, `sales-company-research`, `salesforce`, `suggest-sales-next-step`, `user-context`, `zoominfo` | Current Codex local environment or plugin cache; no standalone original link. | Sales workflows for meeting prep, call follow-up, account research, forecast review, competitive briefs, CRM, and contact enrichment. |
+
 ## English
 
 This repository documents Codex/agent skills and related resources I want to track. Each entry includes a short summary, the original source link, installation notes, and basic usage guidance.
