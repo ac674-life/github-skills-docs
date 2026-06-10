@@ -53,6 +53,7 @@
 | Skill 名字 | 简介 | 详情链接 |
 | --- | --- | --- |
 | ac674-life/codex-context-ops | 我自研的中英文 Codex 插件市场，用于建立上下文安全的 AI 编程工作流。 | [查看详情](#ac674-lifecodex-context-ops) |
+| Understand Anything: Understand | 把代码库、文档或知识库转成可交互知识图，用于探索、搜索和提问。 | [查看详情](#understand-anything-understand) |
 | openai/skills | OpenAI 官方 Codex skill 目录，包含系统、精选和实验性 skills。 | [查看详情](#openaiskills) |
 | forrest-orr/artifacts-kit | Windows 内存伪迹生成的安全研究工具；不是 Codex skill。 | [查看详情](#forrest-orrartifacts-kit) |
 | greensock/gsap-skills | GSAP 官方 AI skills，用于动画 API、时间线、ScrollTrigger、插件和框架实践。 | [查看详情](#greensockgsap-skills) |
@@ -100,6 +101,41 @@ powershell -ExecutionPolicy Bypass -File .\install.ps1
 - 使用 `$context-safe-bugfix`、`$context-safe-review`、`$context-safe-refactor` 处理 bugfix、review 和重构。
 - 使用 `$context-feature-index` 为大型项目建立功能索引，减少每个线程从零探索。
 - 使用 `$context-agency-agents-install` 按项目类型安装精选 agency agents。
+
+### Understand Anything: Understand
+
+#### 原文链接
+
+- 原文：<https://github.com/Egonex-AI/Understand-Anything>
+
+#### 详细说明
+
+`Understand Anything: Understand` 是 Understand Anything 项目中的代码理解技能。它的目标是把代码库、知识库或文档分析成可交互的知识图，让使用者可以通过图谱浏览文件、函数、类和依赖关系，也可以搜索、查看架构导览，并向图谱提问。
+
+它适合在进入一个陌生项目、想快速建立结构认知，或者需要把大型代码库的关系可视化时使用。仓库介绍中强调它不仅追求“好看的图”，而是希望图谱能帮助使用者理解代码各部分如何连接。
+
+#### 我的评价
+
+食之无味，弃之可惜。它的想法很好，但对真实项目的支持性还不够稳定，需要使用者有足够耐心，自己把生成的图谱、代码阅读、任务目标和后续分析串联起来。更适合当作辅助探索工具，而不是直接依赖它完成项目理解。
+
+#### 如何安装到 Codex
+
+仓库 README 中给出的插件安装方式是：
+
+```text
+/plugin marketplace add Lum1104/Understand-Anything
+/plugin install understand-anything
+```
+
+#### 如何使用
+
+```text
+/understand
+```
+
+- 用于分析当前代码库并生成知识图。
+- 生成后可通过交互式 dashboard 浏览结构、搜索节点和查看关系。
+- 更适合做项目初步探索，复杂任务仍需要结合人工判断和其他 Codex 工作流继续推进。
 
 ### openai/skills
 
@@ -379,6 +415,7 @@ This repository documents Codex/agent skills and related resources I want to tra
 | Skill | Summary | Details |
 | --- | --- | --- |
 | ac674-life/codex-context-ops | My self-developed bilingual Codex plugin marketplace for context-safe AI coding workflows. | [View details](#ac674-lifecodex-context-ops-1) |
+| Understand Anything: Understand | Turns codebases, docs, or knowledge bases into an interactive knowledge graph for exploration, search, and questions. | [View details](#understand-anything-understand-1) |
 | openai/skills | Official OpenAI skill catalog for Codex, including system, curated, and experimental skills. | [View details](#openaiskills-1) |
 | forrest-orr/artifacts-kit | Security research tool for generating Windows memory artifacts; not a Codex skill. | [View details](#forrest-orrartifacts-kit-1) |
 | greensock/gsap-skills | Official GSAP skills for teaching agents animation APIs, timelines, ScrollTrigger, plugins, and framework usage. | [View details](#greensockgsap-skills-1) |
@@ -426,6 +463,41 @@ Restart Codex or open a new thread after installation so the plugin and skills a
 - Use `$context-safe-bugfix`, `$context-safe-review`, and `$context-safe-refactor` for bugfix, review, and refactor workflows.
 - Use `$context-feature-index` to build a feature index for large projects and avoid rediscovering the same code in every thread.
 - Use `$context-agency-agents-install` to install a focused agency-agent subset based on the project type.
+
+### Understand Anything: Understand
+
+#### Original Link
+
+- Source: <https://github.com/Egonex-AI/Understand-Anything>
+
+#### Detailed Description
+
+`Understand Anything: Understand` is the code-understanding skill from the Understand Anything project. Its goal is to turn a codebase, knowledge base, or documentation set into an interactive knowledge graph, so users can browse files, functions, classes, dependencies, architectural tours, search results, and questions against the graph.
+
+It is useful when entering an unfamiliar project, trying to build an initial structural map, or visualizing relationships inside a large codebase. The repository positions the graph as a teaching tool rather than a purely impressive visualization.
+
+#### My Evaluation
+
+Useful enough to keep, but not satisfying enough to rely on blindly. The idea is good, but project-level support still feels limited. It requires patience and manual stitching: the user still needs to connect the generated graph, code reading, task goals, and follow-up analysis. I would treat it as an auxiliary exploration tool rather than the main source of project understanding.
+
+#### Install In Codex
+
+The repository README gives this plugin installation flow:
+
+```text
+/plugin marketplace add Lum1104/Understand-Anything
+/plugin install understand-anything
+```
+
+#### How To Use
+
+```text
+/understand
+```
+
+- Analyze the current codebase and generate a knowledge graph.
+- Use the interactive dashboard to browse structure, search nodes, and inspect relationships.
+- Best for early project exploration; complex work still needs human judgment and other Codex workflows.
 
 ### openai/skills
 
